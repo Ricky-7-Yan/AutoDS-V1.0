@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能数据分析Agent系统</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-robot"></i> 智能数据分析Agent系统</h1>
+            <p>基于AI的自主数据分析平台，实时获取网络信息并生成专业报告</p>
+        </header>
+
+        <main class="main-content">
+            <section class="query-section">
+                <div class="card">
+                    <h2><i class="fas fa-search"></i> 分析查询</h2>
+                    <form id="analysis-form">
+                        <div class="form-group">
+                            <label for="query">请输入您的分析需求:</label>
+                            <textarea id="query" name="query" rows="4" placeholder="例如：分析2024年新能源汽车行业市场趋势，包括销量、市场份额和增长率，并生成可视化图表和详细报告"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-play"></i> 开始分析
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <section id="loading" class="hidden">
+                <div class="loading-content">
+                    <div class="spinner"></div>
+                    <h3>Agent正在处理中，请稍候...</h3>
+                    <p>正在执行网络搜索、数据获取和分析任务</p>
+                </div>
+            </section>
+
+            <section id="results" class="hidden">
+                <div class="results-header">
+                    <h2><i class="fas fa-chart-line"></i> 分析结果</h2>
+                    <div class="action-buttons">
+                        <button id="download-report" class="btn-secondary">
+                            <i class="fas fa-download"></i> 下载报告
+                        </button>
+                        <button id="new-query" class="btn-secondary">
+                            <i class="fas fa-plus"></i> 新的查询
+                        </button>
+                    </div>
+                </div>
+
+                <div class="tabs">
+                    <button class="tab-link active" data-tab="tasks">任务计划</button>
+                    <button class="tab-link" data-tab="execution">执行详情</button>
+                    <button class="tab-link" data-tab="report">分析报告</button>
+                    <button class="tab-link" data-tab="visualization">数据可视化</button>
+                </div>
+
+                <div class="tab-content">
+                    <div id="tasks" class="tab-pane active">
+                        <div class="card">
+                            <h3><i class="fas fa-list-check"></i> 任务计划</h3>
+                            <div id="task-plan"></div>
+                        </div>
+                    </div>
+
+                    <div id="execution" class="tab-pane">
+                        <div class="card">
+                            <h3><i class="fas fa-tasks"></i> 任务执行详情</h3>
+                            <div id="execution-results"></div>
+                        </div>
+                    </div>
+
+                    <div id="report" class="tab-pane">
+                        <div class="card">
+                            <h3><i class="fas fa-file-alt"></i> 分析报告</h3>
+                            <div id="report-content" class="report-content"></div>
+                        </div>
+                    </div>
+
+                    <div id="visualization" class="tab-pane">
+                        <div class="card">
+                            <h3><i class="fas fa-chart-bar"></i> 数据可视化</h3>
+                            <div id="visualization-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="error" class="hidden">
+                <div class="card error-card">
+                    <h2><i class="fas fa-exclamation-triangle"></i> 错误信息</h2>
+                    <p id="error-message"></p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>© 2024 智能数据分析Agent系统 | 基于DeepSeek API和多种数据源</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
